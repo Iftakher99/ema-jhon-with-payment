@@ -1,16 +1,18 @@
 import React from "react";
 import { Elements } from "@stripe/react-stripe-js";
-
 import { loadStripe } from "@stripe/stripe-js";
 import SimpleCardForm from "./SimpleCardForm";
+import SplitCardForm from "./SplitCardForm";
+
 const stripePromise = loadStripe(
-  "sk_test_51IeD4mHIHsFKjCw15vssWYOve3qDqV1yFD7ADs2sUzZQrpSFD1XOCIX3Tsslp869PlwB9V9yzYMY0lQEwl4RIFdO00KMnneMJk"
+  "pk_test_51IeD4mHIHsFKjCw1QXeFSuJhTtFG1rTST42DLjZWt9tiaaMO0BJLOckb8UmSNBQZIX1R3eyCMwiTc8NvyjVM083T00G1X7Gfa4"
 );
 
-const ProcessPayment = () => {
+const ProcessPayment = ({ handlePayment }) => {
   return (
     <Elements stripe={stripePromise}>
-      <SimpleCardForm />
+      <SimpleCardForm handlePayment={handlePayment} />
+      {/* <SplitCardForm /> */}
     </Elements>
   );
 };

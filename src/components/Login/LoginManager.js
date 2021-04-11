@@ -22,11 +22,24 @@ export const handleGoogleSignIn = () => {
         email: email,
         successful: true,
       };
+      setUserToken();
+
       return signedInUser;
     })
     .catch((err) => {
       console.log(err);
       console.log(err.message);
+    });
+};
+const setUserToken = () => {
+  firebase
+    .auth()
+    .currentUser.getIdToken(true)
+    .then(function (idToken) {
+      sessionStorage.setItem("token", idToken);
+    })
+    .catch(function (error) {
+      //error
     });
 };
 export const handleFbSignIn = () => {
