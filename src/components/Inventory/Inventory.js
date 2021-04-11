@@ -1,19 +1,37 @@
 import React from "react";
-import fakeData from "../../fakeData/index";
 
 const Inventory = () => {
   const handleAddProduct = () => {
-    fetch("http://localhost:5000/addProduct", {
+    const product = {};
+    fetch("https://emajhon.herokuapp.com/addProduct", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(fakeData),
+      body: JSON.stringify(product),
     });
   };
   return (
     <div>
-      <button onClick={handleAddProduct}>Add Product</button>
+      <form action=''>
+        <p>
+          <span>Name: </span>
+          <input type='text' />
+        </p>
+        <p>
+          <span>price: </span>
+          <input type='text' />
+        </p>
+        <p>
+          <span>Quantity:</span>
+          <input type='text' />
+        </p>
+        <p>
+          <span>Product Image</span>
+          <input type='file' />
+        </p>
+        <button onClick={handleAddProduct}>Add Product</button>
+      </form>
     </div>
   );
 };
